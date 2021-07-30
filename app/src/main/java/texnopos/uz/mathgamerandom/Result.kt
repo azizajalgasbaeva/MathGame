@@ -17,10 +17,8 @@ class Result : AppCompatActivity() {
         setContentView(R.layout.activity_result)
         dao = MyDatabase.getInstance(this).resultsDao()
         var allUsers = dao.getAllResult()
-        val totalQuestions = intent.getIntExtra("questions", 0)
         val player = intent.getStringExtra("playerName").toString()
         val score = intent.getIntExtra("score", 0)
-        tvquestions.text = "Total questions: ${totalQuestions}"
         tvscoree.text = "Your score: ${score}"
 
         fun clickbutton() {
@@ -52,7 +50,6 @@ class Result : AppCompatActivity() {
                     dao.getUserScoreUpdate(allUsers[i])
                return
             }else if ((allUsers[i].namePlayer== player) && allUsers[i].score>= score){
-                dao.getUserScoreUpdate(allUsers[i])
             return
             }
 
