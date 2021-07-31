@@ -19,11 +19,10 @@ class SecondActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_second)
         namePlayer = intent.getStringExtra("NamePlayer").toString()
-        tvName.setText(namePlayer)
+        tvName.text=namePlayer
         inputNumber()
         time = 10
     }
-
     var timer = object : CountDownTimer(10000, 1000) {
         override fun onTick(millisUntilFinished: Long) {
             timertext.setText(time.toString())
@@ -74,6 +73,7 @@ class SecondActivity : AppCompatActivity() {
             time = 10
             inputNumber()
         } else {
+            timer.cancel()
             timer.onFinish()
         }
     }
